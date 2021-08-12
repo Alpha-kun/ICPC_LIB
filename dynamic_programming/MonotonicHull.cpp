@@ -45,12 +45,9 @@ int eval(int x) {
     int lo = 0, hi = n;
     while (lo + 1 < hi) {
         int mid = (lo + hi) >> 1;
-        if (x < interval[mid].first)
-            hi = mid;
-        else if (interval[mid].second < x)
-            lo = mid;
-        else
-            return line[mid].first * x + line[mid].second;
+        if (x < interval[mid].first) hi = mid;
+        else if (interval[mid].second < x) lo = mid;
+        else return line[mid].first * x + line[mid].second;
     }
     if (interval[lo].first <= x && x <= interval[lo].second)
         return line[lo].first * x + line[lo].second;
