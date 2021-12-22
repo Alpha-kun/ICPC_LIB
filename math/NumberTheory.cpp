@@ -29,10 +29,23 @@ ll gcd(ll p, ll q) {
 }
 
 // compute a table of all multiplicative inverse of p in O(P)
-void multinv(int p){
+void multinv(int p) {
     int inv[p];
     inv[1] = 1;
     for (int i = 2; i < p; i++) {
         inv[i] = p - ((p / i) * inv[p % i] % p);
+    }
+}
+
+void prime_sieve() {
+    int lpf[MAXN] = {0};
+    for (int i = 2; i < MAXN; ++i) {
+        if (lpf[i] == 0) {
+            lpf[i] = i;
+            if (i > 450) continue;
+            for (int j = i * i; j < MAXN; j += i) {
+                if (lpf[j] == 0) lpf[j] = i;
+            }
+        }
     }
 }

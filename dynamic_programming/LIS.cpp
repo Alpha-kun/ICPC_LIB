@@ -3,14 +3,14 @@
 using namespace std;
 
 int biSearch(vector<int>& b, int up, int i) {
-    if (i > b[up]) return up + 1;
+    if (i > b[up]) return up + 1;//for LNDS, change > to >=
     int lo = 1,hi = up, mid;
     while (lo + 1 < hi) {
         mid = (lo + hi) >>1;
         if (i < b[mid]) hi = mid;
         else lo = mid;
     }
-    if (b[lo] < i) return lo + 1;
+    if (b[lo] < i) return lo + 1; //for LNDS, change < to <=
     else return lo;
 }
 

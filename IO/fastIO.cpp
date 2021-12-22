@@ -1,8 +1,8 @@
-//put at begining of main() for fast I/O
+//put at beginning of main() for fast I/O
 ios::sync_with_stdio(0);
 cin.tie(NULL);
 
-//in case of rediculously large I/O
+//in case of ridiculously large I/O
 void fastscan(int &number) {
     int sign = 1;
     register int c;

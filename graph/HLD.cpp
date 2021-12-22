@@ -1,4 +1,4 @@
-vector<int> G[MAXN];
+vector<int> G[MAXN];//WILL BE MODIFIED!!!!!!
 int sz[MAXN];
 int depth[MAXN];
 int pa[MAXN];

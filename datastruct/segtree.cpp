@@ -52,7 +52,7 @@ void add(Node *n, int l, int r, int val) {
     pu(n);
 }
 
-int find_min(Node *n, int l, int r) {
+int query(Node *n, int l, int r) {
     if (n->l == l && n->r == r) {
         return n->min;
     }
@@ -68,3 +68,7 @@ int find_min(Node *n, int l, int r) {
 }
 
 Node *rt;
+
+//dfs(1, -1);
+//chain_dfs(1, false);
+//rt = new Node(1, n);
