@@ -27,7 +27,7 @@ void pd(Node *n) {
     }
 }
 
-void sit(Node *n, int x, int val) {
+void update(Node *n, int x, int val) {
     if (n->l == n->r)
         n->reset = val;
     else {
@@ -47,4 +47,14 @@ int git(Node *n, int x) {
         if (x <= mid) return git(n->lc, x);
         else return git(n->rc, x);
     }
+}
+
+void del(Node *n) {
+    if (n->l == n->r) {
+        delete n;
+        return;
+    }
+    del(n->lc);
+    del(n->rc);
+    delete n;
 }

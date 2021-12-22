@@ -1,9 +1,10 @@
-vector<int> G[MAXN];//WILL BE MODIFIED!!!!!!
+vector<int> G[MAXN];/**WARNING: G will be modified**/
 int sz[MAXN];
 int depth[MAXN];
 int pa[MAXN];
 int chr[MAXN];
 int place[MAXN];
+int EDGE_MODE = 0;/**WARNING: if using edge mode, watch out for null segtree query**/
 
 void dfs(int u, int p) {
     sz[u] = 1;
@@ -13,7 +14,7 @@ void dfs(int u, int p) {
     if (p != -1)
         G[u].erase(find(G[u].begin(), G[u].end(), p));
 
-    for (int v:G[u]) {
+    for (int v: G[u]) {
         dfs(v, u);
         sz[u] += sz[v];
     }
@@ -40,8 +41,9 @@ void update(int u, int v, int x) {
         // Always pull up the chain with the deeper root.
         if (depth[chr[u]] > depth[chr[v]]) swap(u, v);
         int root = chr[v];
-        segtree.add(place[root], place[v], x);
 //        printf("process1 %d-%d\n", place[root], place[v]);
+        add(rt, place[root], place[v], x);
+
         v = pa[root];
     }
 
@@ -49,8 +51,10 @@ void update(int u, int v, int x) {
         swap(u, v);
 
     // u is now an ancestor of v.
-    segtree.add(place[u], place[v], x);
-//    printf("process2 %d-%d\n", place[u], place[v]);
+
+//    printf("process2 %d-%d\n", place[u] + EDGE_MODE, place[v]);
+    add(rt, place[u] + EDGE_MODE, place[v], x);
+
 }
 
 int query(int u, int v) {
@@ -59,7 +63,7 @@ int query(int u, int v) {
         // Always pull up the chain with the deeper root.
         if (depth[chr[u]] > depth[chr[v]]) swap(u, v);
         int root = chr[v];
-        ans = segtree.max(find_max(rt, place[root], place[v]));
+        ans = ans + find_sum(rt, place[root], place[v]);
         v = pa[root];
     }
 
@@ -67,6 +71,11 @@ int query(int u, int v) {
         swap(u, v);
 
     // u is now an ancestor of v.
-        ans = segtree.max(find_max(rt, place[u], place[v]));
+    /**u is the LCA of the two inputs**/
+    ans = ans + find_sum(rt, place[u] + EDGE_MODE, place[v]);
     return ans;
 }
+
+//dfs(0, -1);
+//chain_dfs(0, false);
+//rt = new Node(0, n + 1);
