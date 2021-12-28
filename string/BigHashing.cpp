@@ -1,5 +1,6 @@
-#define MOD 1000000000051L
-
+#define MOD 1000000000051LL
+#define mod 1000000123
+#define BASE 1000003
 
 ll mult(ll a, ll b) {
     ll bl = b >> 20;

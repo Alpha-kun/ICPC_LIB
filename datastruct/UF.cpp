@@ -15,3 +15,6 @@ void uni(int u, int v) {
         p[root(v)] = root(u);
     }
 }
+
+//iota(p, p + MAXN, 0);
+//fill_n(sz, MAXN, 1);
