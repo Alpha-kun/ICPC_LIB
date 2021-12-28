@@ -68,7 +68,3 @@ int query(Node *n, int l, int r) {
 }
 
 Node *rt;
-
-//dfs(1, -1);
-//chain_dfs(1, false);
-//rt = new Node(1, n);
