@@ -4,7 +4,7 @@ int depth[MAXN];
 int pa[MAXN];
 int chr[MAXN];
 int place[MAXN];
-int EDGE_MODE = 0;/**WARNING: if using edge mode, watch out for null segtree query**/
+int EDGE_MODE = 0;/**WARNING: if using edge mode, watch out for l>r segtree query**/
 
 void dfs(int u, int p) {
     sz[u] = 1;
@@ -12,7 +12,7 @@ void dfs(int u, int p) {
     pa[u] = p;
     //delete parent
     if (p != -1)
-        G[u].erase(find(G[u].begin(), G[u].end(), p));
+        G[u].erase(find(G[u].begin(), G[u].end(), p));/**WARNING: delete this line if G is given with pnt->chd only**/
 
     for (int v: G[u]) {
         dfs(v, u);
