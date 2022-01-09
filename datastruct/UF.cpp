@@ -4,6 +4,8 @@ int cont;
 
 int root(int i) {
     return p[i] == i ? i : root(p[i]);
+    //with path compression
+    //return p[i] = p[i] == i ? i : root(p[i]);
 }
 
 void uni(int u, int v) {
