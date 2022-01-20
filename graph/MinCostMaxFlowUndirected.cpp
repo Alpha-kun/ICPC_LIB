@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define INF 10000001
+#define INF 10000001//WARNING: Make this bigger if cost~O(2^30)
 typedef long long ll;
 typedef pair<ll, ll> pll;
 
@@ -14,15 +14,19 @@ struct Edge {
     int other(int s) { return s == v ? w : v; }
 
     int getRez(int s) {
-        if (f > 0) return s == v ? cap - f : f;
-        else if (f < 0) return s == v ? -f : cap + f;
-        else return cap;
+        return s == v ? cap - f : f;
+        //for undirected graph
+        //if (f > 0) return s == v ? cap - f : f;
+        //else if (f < 0) return s == v ? -f : cap + f;
+        //else return cap;
     }
 
     int getCost(int s) {
-        if (f > 0) return s == v ? cost : -cost;
-        else if (f < 0) return s == v ? -cost : cost;
-        else return cost;
+        return s == v ? cost : -cost;
+        //for undirected graph
+        //if (f > 0) return s == v ? cost : -cost;
+        //else if (f < 0) return s == v ? -cost : cost;
+        //else return cost;
     }
 
     void addFlow(int s, int d) {
@@ -32,7 +36,7 @@ struct Edge {
 };
 
 int n;
-vector<Edge *> G[1005];
+vector<Edge *> G[1005];//Weights can be negative
 vector<int> dist;
 vector<int> from;
 vector<Edge *> arc;
@@ -64,6 +68,7 @@ void spfa(int s) {
     }
 }
 
+//min cost to send p units of flow from s to t
 pll MCMF(int s, int t, int p) {
     ll maxflow = 0, mincost = 0;
     while (true) {
