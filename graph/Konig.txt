@@ -1,0 +1,5 @@
+In Bipartitie graph
+
+|min vertex cover| = |max matching|
+
+|min edge cover| = |max independent set| = |V|- |max matching|
