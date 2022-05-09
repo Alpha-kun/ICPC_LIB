@@ -1,9 +1,7 @@
 #define idx(c) c-'a'
 
 vector<vector<int>> ch;
-vector<int> val;
-vector<int> f;
-vector<int> last;
+vector<int> val;//val[i]==id if node i is the end of string id and 0 otherwise
 
 void insert(string &s, int id) {
     int n = 0;
@@ -28,6 +26,9 @@ void buildtrie(vector<string> &p) {
         insert(p[i], i + 1);
     }
 }
+
+vector<int> f;
+vector<int> last;// the id of last terminal node
 
 void getFail() {
     queue<int> q;

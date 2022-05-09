@@ -1,3 +1,4 @@
+//evaluate dp[i][jl...jr] such that kl<=opt(i,j)<=kr for jl<=j<=jr
 void dac(int i, int jl, int jr, int kl, int kr) {
     int jmid = (jl + jr) >> 1;
     dp[i][jmid] = INF;

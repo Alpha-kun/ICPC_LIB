@@ -1,7 +1,3 @@
-#include<bits/stdc++.h>
-
-using namespace std;
-
 int biSearch(vector<int>& b, int up, int i) {
     if (i > b[up]) return up + 1;//for LNDS, change > to >=
     int lo = 1,hi = up, mid;

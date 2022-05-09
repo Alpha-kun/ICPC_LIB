@@ -36,14 +36,11 @@ void chain_dfs(int u, bool hvy) {
 
 
 void update(int u, int v, int x) {
-//    printf("update %d-%d with %d\n", u, v, x);
     while (chr[u] != chr[v]) {
         // Always pull up the chain with the deeper root.
         if (depth[chr[u]] > depth[chr[v]]) swap(u, v);
         int root = chr[v];
-//        printf("process1 %d-%d\n", place[root], place[v]);
         add(rt, place[root], place[v], x);
-
         v = pa[root];
     }
 
@@ -51,10 +48,7 @@ void update(int u, int v, int x) {
         swap(u, v);
 
     // u is now an ancestor of v.
-
-//    printf("process2 %d-%d\n", place[u] + EDGE_MODE, place[v]);
     add(rt, place[u] + EDGE_MODE, place[v], x);
-
 }
 
 int query(int u, int v) {
